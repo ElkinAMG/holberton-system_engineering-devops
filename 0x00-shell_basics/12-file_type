@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /tmp/
+touch iamafile
+file iamafile
