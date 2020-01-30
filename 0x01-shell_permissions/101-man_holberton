@@ -8,7 +8,7 @@
 .SH OPTIONS
     holberton does not take any option. However, you can supply studentname.
 .SH SEE ALSO
-    peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+.I    peerlearning(2), projectbased(2), fullstack(2), Betty(1)
 .SH BUGS
     No known bugs.
 .SH AUTHOR
