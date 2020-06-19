@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Displays numbers from 1 to 20 with exceptions.
+
+NUM=1
+
+while [ $NUM -lt 21 ];
+do
+    echo $NUM
+    case $NUM in
+	4)
+	    echo "bad luck from China"
+	    ;;
+	9)
+	    echo "bad luck from Japan"
+	    ;;
+	17)
+	    echo "bad luck from Italy"
+	    ;;
+    esac
+    NUM=$((NUM+1))
+done

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays patterns with ls command.
+
+for x in $(ls -1);
+do
+    echo "$x"
+done

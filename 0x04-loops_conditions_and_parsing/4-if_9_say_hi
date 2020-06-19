@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Prints Holberton School 10 times with an exception.
+
+NUM=0
+
+while [ $NUM -lt 10 ];
+do
+    echo "Holberton School"
+    if [ $NUM -eq 8 ];
+    then
+	echo "Hi"
+    fi
+    NUM=$((NUM+1))
+done

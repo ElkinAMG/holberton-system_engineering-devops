@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Prints Holberton School 10 times with Until loop.
+
+NUM=0
+
+until [ $NUM -gt 10 ];
+do
+    echo "Holberton School"
+    NUM=$((NUM+1))
+done

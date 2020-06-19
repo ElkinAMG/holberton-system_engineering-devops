@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Prints Holberton School 10 times with for loop.
+
+for _ in $(seq 1 10);
+do
+    echo "Holberton School"
+done
