@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Displays patterns with ls command.
 
-for x in *;
+for x in $(ls -1);
 do
     echo "$x" | cut -d "-" -f2
 done
