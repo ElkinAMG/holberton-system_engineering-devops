@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Highlander, Script invincible.
+
+function killing()
+{
+    echo "I am invincible!!!"
+}
+
+trap killing SIGTERM
+
+while sleep 2;
+do
+    echo "To infinity and beyond"
+done
