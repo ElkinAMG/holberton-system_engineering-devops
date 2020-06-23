@@ -24,7 +24,7 @@ int main(void)
 		else
 		{
 			printf("Zombie process created, PID: %i\n", getpid());
-			exit (0);
+			exit(0);
 		}
 	}
 
@@ -41,9 +41,9 @@ int main(void)
 
 int infinite_while(void)
 {
-    while (1)
-    {
-        sleep(1);
-    }
-    return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
