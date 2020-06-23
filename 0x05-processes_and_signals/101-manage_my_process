@@ -10,15 +10,15 @@ function error()
 
 function start()
 {
-    ./manage_my_process &
+    (./manage_my_process) &
     echo $$ > $FILE
     echo "manage_py_process started"
 }
 
 function stop()
 {
-    pkill -f /manage_my_process
-    rm $FILE
+    pkill -f ./manage_my_process
+    sudo rm $FILE
     echo "manage_my_process stopped"
 }
 
