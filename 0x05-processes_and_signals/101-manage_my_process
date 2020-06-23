@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Process Manager.
+
+FILE="/var/run/my_process.pid"
+
+function error()
+{
+    echo "Usage: manage_my_process {start|stop|restart}"
+}
+
+function start()
+{
+    ./manage_my_process &
+    echo $! > $FILE
+    echo "manage_py_process started"
+}
+
+function stop()
+{
+    pkill -f /manage_my_process
+    rm $FILE
+    echo "manage_my_process stopped"
+}
+
+function restart()
+{
+    pkill -f ./manage_my_process
+    ./manage_my_process &
+    echo $! > $FILE
+    echo "manage_my_process restarted"
+}
+
+if [ $# -ne 1 ];
+then
+    error
+else
+    if [ $1 == "start" ];
+    then
+	start
+    elif [ $1 == "stop" ];
+    then
+	stop
+    elif [ $1 == "restart" ];
+    then
+	restart
+    else
+	error
+    fi
+fi
