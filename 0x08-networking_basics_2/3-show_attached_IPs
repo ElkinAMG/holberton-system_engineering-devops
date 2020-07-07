@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Shows active ip's in the current machine.
+
+ifconfig | grep "inet " | cut -d ' ' -f10
