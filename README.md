@@ -13,4 +13,7 @@ Here you can find difference folders that takes some topics about ***BASH SCRIPT
 | [Shell Variables and Expansions](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x03-shell_variables_expansions) | How variables in Shell works and how to use them |
 | [Shell Script Statements](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x04-loops_conditions_and_parsing) | Everything about loops, conditionals and least of statements |
 | [Shell Processes and Signals](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x05-processes_and_signals) | Some topics about Signals and Processes in Shell |
+| [Regular Expressions](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x06-regular_expressions) | Lorem Ipsum |
+| [Networking Part 0](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x07-networking_basics) | Lorem Ipsum |
+| [Networking part 1](https://github.com/ElkinAMG/holberton-system_engineering-devops/tree/master/0x08-networking_basics_2) | Lorem Ipsum |
 |||
