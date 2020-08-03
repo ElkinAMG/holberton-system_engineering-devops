@@ -1,4 +1,4 @@
 # Kills a process
 
-exec { './killmenow':
+exec { 'pkill -f ./killmenow':
 }
