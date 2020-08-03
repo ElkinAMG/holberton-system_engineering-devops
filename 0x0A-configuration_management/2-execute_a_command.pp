@@ -1,3 +1,3 @@
 # Kills a process
 
-exec { 'pkill killmenow':}
+exec { '/usr/bin/env pkill killmenow':}
