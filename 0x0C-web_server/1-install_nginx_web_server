@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Installs and configures NGINX.
 
+apt -y update
+
 apt-get -y install nginx
 
 echo "Holberton School" > /var/www/html/index.html
