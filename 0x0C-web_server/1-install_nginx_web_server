@@ -8,3 +8,5 @@ cd /var/www/html || exit
 FILE=$(ls)
 
 echo "Holberton School" > "$FILE"
+
+service nginx restart
