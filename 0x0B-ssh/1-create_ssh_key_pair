@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# It creates a new key for SSH
+
+ssh-keygen -fholberton -b4096 -N"betty"
