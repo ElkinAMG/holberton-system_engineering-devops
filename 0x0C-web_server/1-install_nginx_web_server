@@ -3,10 +3,6 @@
 
 apt-get -y install nginx
 
-cd /var/www/html || exit
-
-FILE=$(ls)
-
-echo "Holberton School" > "$FILE"
+echo "Holberton School" > /var/www/html/index.html
 
 service nginx restart
