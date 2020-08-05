@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configures a NGINX server for redirection.
+
+apt-get -y install nginx
+
+cd /var/www/html || exit
+
+FILE=$(ls)
+
+echo "Holberton School" > "$FILE"
+
+STRING="\\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+
+sed -i "24i $STRING" /etc/nginx/sites-available/default

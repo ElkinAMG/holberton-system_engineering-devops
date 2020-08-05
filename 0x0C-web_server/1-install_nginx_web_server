@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Installs and configures NGINX.
+
+apt-get -y install nginx
+
+cd /var/www/html || exit
+
+FILE=$(ls)
+
+echo "Holberton School" > "$FILE"
