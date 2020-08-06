@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Create custom 404 page.
+
+apt-get -y install nginx
+
+cd /var/www/html || exit
+
+FILE=$(ls)
+PATH="/usr/share/nginx/html/custom_404.html"
+
+echo "Holberton School" > "$FILE"
+
+echo "Ceci n'est pas une page" > "$PATH"
+
+STRING="\\\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot $PATH;\n\t\tinternal;\n\t}"
+
+sed -i "24i $STRING" /etc/nginx/sites-available/default
+
+service nginx restart
