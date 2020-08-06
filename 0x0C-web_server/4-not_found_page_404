@@ -6,14 +6,16 @@ apt-get -y install nginx
 cd /var/www/html || exit
 
 FILE=$(ls)
-PATH="/usr/share/nginx/html/custom_404.html"
+PATH="/var/www/html/custom_404.html"
 
 echo "Holberton School" > "$FILE"
 
 echo "Ceci n'est pas une page" > "$PATH"
 
-STRING="\\\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot $PATH;\n\t\tinternal;\n\t}"
-
+STRING="\\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
 sed -i "24i $STRING" /etc/nginx/sites-available/default
+
+STRING="\\\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot $PATH;\n\t\tinternal;\n\t}"
+sed -i "28i $STRING" /etc/nginx/sites-available/default
 
 service nginx restart
