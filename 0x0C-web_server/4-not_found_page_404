@@ -17,6 +17,6 @@ echo "Holberton School" > /var/www/html/index.html
 
 sed -i "24i $REDIR" /etc/nginx/sites-available/default
 sed -i "26i $NFOUND" /etc/nginx/sites-available/default
-echo "${ERROR}" > /var/www/html/404.html
+echo "${ERROR}" > /var/www/html/custom_404.html
 
 service nginx restart
