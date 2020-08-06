@@ -1,6 +1,8 @@
 # Installs NGINX and configures it.
 
-package { 'nginx':}
+package { 'nginx':
+  ensure => installed,
+}
 
 file { '/var/www/html/index.html':
   content => 'Holberton School',
@@ -8,6 +10,11 @@ file { '/var/www/html/index.html':
 
 file_line { 'Redirection':
   path  => '/etc/nginx/sites-available/default',
-  line  => '\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}'
   after => 'server_name _;',
+  line  => 'location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}'
+}
+
+service { 'nginx':
+  ensure => running,
+  require => Package['nginx'],
 }
