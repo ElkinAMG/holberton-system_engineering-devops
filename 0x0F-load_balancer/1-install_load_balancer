@@ -4,18 +4,20 @@
 sudo apt-get -y update && sudo apt-get -y upgrade
 sudo apt-get install haproxy
 
-BACKEND="\nbackend web-servers\n\t \
-balance roundrobin\n\t \
-option forwardfor\n\t \
-option httpchk HEAD / HTTP/1.1\\r\\nHost:localhost\n\t \
-server 1531-web-01 35.229.108.128:80 check\n\t \
+BACKEND="\nbackend web-servers\n\t\
+balance roundrobin\n\t\
+option forwardfor\n\t\
+option httpclose\n\t\
+server 1531-web-01 35.229.108.128:80 check\n\t\
 server 1531-web-01 107.21.161.159:80 check"
 
-FRONTEND="\nfrontend hbnb\n\t \
-bind *:80\n\t \
-mode http\n\t \
+FRONTEND="\nfrontend hbnb\n\t\
+bind *:80\n\t\
+mode http\n\t\
 default_backend web-servers"
 
-sudo echo "$BACKEND$FRONTEND" >> /etc/haproxy/haprocy.cfg
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+
+sudo echo "$BACKEND $FRONTEND" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy start

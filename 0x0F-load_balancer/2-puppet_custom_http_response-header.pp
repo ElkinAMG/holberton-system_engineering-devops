@@ -9,7 +9,7 @@ file { '/var/www/html/index.html':
 }
 
 file_line { 'HEADER':
-  path  => '/etc/nginx/sites-available/default',
+  path  => '/etc/nginx/nginx.conf',
   after => 'server_name _;',
   line  => 'add_header X-Served-By $hostname'
 }
