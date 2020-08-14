@@ -10,8 +10,8 @@ file { '/var/www/html/index.html':
 
 file_line { 'HEADER':
   path  => '/etc/nginx/nginx.conf',
-  after => 'server_name _;',
-  line  => 'add_header X-Served-By $hostname'
+  after => 'sendfile on;',
+  line  => 'add_header X-Served-By $hostname;'
 }
 
 service { 'nginx':
