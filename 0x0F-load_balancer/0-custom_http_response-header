@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Stablish custom HTTP HEADER.
+# shellcheck disable=SC2154
+
+sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get -y install nginx
+
+sudo echo "Holberton School" > /var/www/html/index.html
+sudo sed -i "24i add_header X-Served-By $hostname;" /etc/nginx/sites-available/default
+
+sudo service nginx start
