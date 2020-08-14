@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install and Configures HAproxy
 
-sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get -y update
 sudo apt-get install haproxy
 
 BACKEND="\nbackend web-servers\n\tbalance roundrobin\n\toption forwardfor\n\toption httpclose\n\tserver 1531-web-01
