@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Debugs listening port
 
-sudo service nginx stop
-kill -9 "$(psgrep nginx)"
+sed -i "s/ipv6only=on//g" /etc/nginx/sites-available/default
 sudo sed -i "s/listen 8080 default_server;/listen 80 default_server;/" /etc/nginx/sites-enabled/default
-sudo service nginx start
+sudo service nginx restart
