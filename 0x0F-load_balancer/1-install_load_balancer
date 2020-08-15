@@ -2,7 +2,7 @@
 # Install and Configures HAproxy
 
 sudo apt-get -y update
-sudo apt-get install haproxy
+sudo apt-get -y install haproxy
 
 sudo echo "\nfrontend firstbalance\n
 \tbind *:80\n
