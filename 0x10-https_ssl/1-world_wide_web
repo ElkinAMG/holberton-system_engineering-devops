@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This is a comment explaining what this script does.
+# shellcheck disable=SC2086
+
+DOMAIN=$1
+if [ "$#" -eq 2 ];
+then
+    SUBDOMAIN=$2
+else
+    SUBDOMAIN=("www" "lb-01" "web-01" "web-02")
+fi
+
+for sub in "${SUBDOMAIN[@]}";
+do
+    echo -n "The subdomain $sub"
+    dig "$sub.$DOMAIN" | grep -A1 'ANSWER SECTION:' | tail -n -1 | awk '{ print " is a " $4 " record and points to " $5 }'
+done
