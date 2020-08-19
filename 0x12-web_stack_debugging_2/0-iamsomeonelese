@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This is a comment explaining what this script does.
+sudo -u "$1" whoami
