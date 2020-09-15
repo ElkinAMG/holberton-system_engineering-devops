@@ -1,27 +1,26 @@
 #!/usr/bin/python3
-"""This script returns information from an API.
-"""
+""" For a given employee, returns information about the TODO list progress"""
 import requests
-import sys
+from sys import argv
 
-employeer_id = sys.argv[1]
 
-user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(
-    employeer_id)).json()
-todos = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
+if __name__ == '__main__':
+    id_ = argv[1]
+    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id_)
 
-tasks = [i for i in todos if i.get('userId') is user.get('id')]
-completed = 0
-total = 0
+    s = requests.Session()
 
-for task in tasks:
-    total += 1
-    if task.get('completed'):
-        completed += 1
+    url2 = 'https://jsonplaceholder.typicode.com/users/{}'.format(id_)
+    response = s.get(url2)
+    name = response.json()['name']
 
-print('Employee {} is done with tasks({}/{}):'.format(
-    user.get('name'), completed, total))
+    response = s.get(url)
+    body = response.json()
+    tasks_done = []
+    for b in body:
+        if b['completed']:
+            tasks_done.append('\t ' + b['title'])
 
-for task in tasks:
-    if task.get('completed'):
-        print('\t {}'.format(task.get('title')))
+    print('Employee {} is done with tasks({}/{}):'
+          .format(name, len(tasks_done), len(body)))
+    print(*tasks_done, sep='\n')

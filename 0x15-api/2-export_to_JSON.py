@@ -1,31 +1,29 @@
 #!/usr/bin/python3
-"""This script returns information from an API.
-"""
-import json, requests, sys
+""" For a given employee, returns information about the TODO list progress"""
+import json
+import requests
+from sys import argv
 
-employeer_id = sys.argv[1]
 
-user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(employeer_id)).json()
-todos = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
+if __name__ == '__main__':
+    id_ = argv[1]
+    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id_)
 
-tasks = [i for i in todos if i.get('userId') is user.get('id')]
-titles = []
-status = []
-total = 0
+    s = requests.Session()
 
-for task in tasks:
-    status.append(task.get('completed'))
-    titles.append(task.get('title'))
-    total += 1
+    url2 = 'https://jsonplaceholder.typicode.com/users/{}'.format(id_)
+    response = s.get(url2)
+    name = response.json()
+    name = name.get('username')
 
-employee = {"{}".format(user.get('id')): []}
+    response = s.get(url)
+    body = response.json()
 
-for i in range(total):
-    employee.get("{}".format(user.get('id'))).append({
-    'task': titles[i],
-    'completed': status[i],
-    'username': user.get('username')
-    })
+    data = {id_: []}
+    for task in body:
+        data[id_].append({"task": "{}".format(task.get('title')),
+                          "completed": task.get('completed'),
+                          "username": "{}".format(name)})
 
-with open('{}.json'.format(user.get('id')), 'w', newline='') as json_file:
-    json.dump(employee, json_file, indent=4)
+    with open(id_ + '.json', 'w') as outfile:
+        json.dump(data, outfile)

@@ -1,26 +1,27 @@
 #!/usr/bin/python3
-"""This script returns information from an API.
-"""
+""" For a given employee, returns information about the TODO list progress"""
 import csv
 import requests
-import sys
+from sys import argv
 
-employeer_id = sys.argv[1]
 
-user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(
-    employeer_id)).json()
-todos = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
+if __name__ == '__main__':
+    id_ = argv[1]
+    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(id_)
 
-tasks = [i for i in todos if i.get('userId') is user.get('id')]
-titles = []
-com = 0
+    s = requests.Session()
 
-for task in tasks:
-    if task.get('completed'):
-        com += 1
-        titles.append(task.get('title'))
+    url2 = 'https://jsonplaceholder.typicode.com/users/{}'.format(id_)
+    response = s.get(url2)
+    name = response.json()['username']
 
-with open('{}.csv'.format(user.get('id')), 'w', newline='') as f:
-    writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-    for i in range(com):
-        writer.writerow([user.get('id'), user.get('username'), com, titles[i]])
+    response = s.get(url)
+    body = response.json()
+
+    with open(id_ + '.csv', mode='w') as csv_file:
+        employee_writer = csv.writer(csv_file, delimiter=',', quotechar='"',
+                                     quoting=csv.QUOTE_ALL)
+
+        for todo in body:
+            employee_writer.writerow([id_, name, todo['completed'],
+                                      todo['title']])
